@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Crossdomain-xhr : " />
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Crossdomain XHR</title>
+  </head>
+  <body>
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/ebay/crossdomain-xhr">View on GitHub</a>
+
+          <h1 id="project_title">Crossdomain XHR</h1>
+          <h2 id="project_tagline"></h2>
+
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h3>
+<a name="welcome-to-github-pages" class="anchor" href="#welcome-to-github-pages"><span class="octicon octicon-link"></span></a>Welcome to Hello World !!!.</h3>
+
+<p>This page is a summary of examples, of how to setup and use this library.</p>
+  <ul>
+    <li><h3><a href='#setup'>Setup</a></h3></li>
+    <li><h3><a href='#examples'>Examples</a></h3></li>
+    <li>
+      <ol>
+        <li>
+          <a href='#ajax-get'>Standard Ajax GET</a>
+        </li>
+        <li>
+          <a href='#ajax-post'>Standard Ajax POST</a>
+        </li>
+        <li>
+          <a href='#ajax-cors'>Strictly CORS </a>
+        </li>
+        <li>
+          <a href='#ajax-cors-polyfill'>CORS Polyfill </a>
+        </li>
+        <li>
+          <a href='#ajax-cors-sifr'>CORS - SIFR </a>
+        </li>
+      </ol>
+      </li>
+      <li>
+        <h3><a href='#setup-sifr'>Setup SIFR Proxy Html</a></h3>
+      </li>
+    </ul>
+
+      <h4 id="setup"> Setup crossdomain XHR at the page consuming the cross domain service.</h4>
+
+        <ul>
+          <li>
+            <a href='https://github.com/ebay/crossdomain-xhr/blob/master/dist/crossdomain-xhr.min.js' download='https://github.com/ebay/crossdomain-xhr/blob/master/dist/crossdomain-xhr.min.js'>Download CrossDomain XHR </a>
+          </li>
+          <li>
+            Create a Script block and add set script source to downloaded crossdomain xhr library.
+          </li>
+          <li>
+            Execute a javascript module to setup the CrossDomain specific configuration
+
+          </li>
+        </ul>
+
+  <h4 id="examples">Examples</h4>
+<h5 id="ajax-get">Standard Ajax GET With CrossDomain XHR</h5>
+<pre class="prettyprint"><code class="typ">
+'use strict';
+var url = "http://{{domainname}}/{{website}}/{{api}}";
+var settings = {"key1":"value", "key2" : "value2"};
+cXHR.ajax.GET(url, settings,
+    function(status, successResponse, xhr){
+    },
+    function  onError(status, errorResponse, xhr){
+    }
+);
+</code>
+</pre>
+
+<h5 id="ajax-post">Standard Ajax POST With CrossDomain XHR</h5>
+<pre class="prettyprint"><code class="typ">
+'use strict';
+var url = "http://{{domainname}}/{{website}}/{{api}}";
+var settings = {"key1":"value", "key2" : "value2"};
+cXHR.ajax.POST(url, settings,
+    function(status, successResponse, xhr){
+    },
+    function  onError(status, errorResponse, xhr){
+    }
+);
+</code>
+</pre>
+
+<h5 id="ajax-cors">Strictly CORS </h5>
+<pre class="prettyprint"><code class="typ">
+'use strict';
+cXHR.config.set({'useCORS' : true});
+var url = "http://{{cross-domain}}/{{website}}/{{api}}";
+var settings = {"key1":"value", "key2" : "value2"};
+cXHR.ajax.POST(url, settings,
+    function(status, successResponse, xhr){
+    },
+    function  onError(status, errorResponse, xhr){
+    }
+);
+</code>
+</pre>
+
+
+<h5 id="ajax-cors-polyfill">CORS with Polyfill
+  <span style='float:right'>Check <a href='sifr.html'>Sifr.html</a></span></h5>
+<pre class="prettyprint"><code class="typ">
+'use strict';
+ cXHR.config.set({
+  'useCORSPolyfill' : true,
+  'allowedOrigins' : '*',
+  'sifrGateway' : 'sifr.html'});
+var url = "http://{{cross-domain}}/{{website}}/{{api}}";
+var settings = {"key1":"value", "key2" : "value2"};
+cXHR.ajax.POST(url, settings,
+    function(status, successResponse, xhr){
+    },
+    function  onError(status, errorResponse, xhr){
+    }
+);
+Sifr.html is a proxied gateway HTML.
+</code>
+</pre>
+
+<h5 id="ajax-cors-sifr">CORS with SIFR </h5>
+<pre class="prettyprint"><code class="typ">
+ 'use strict';
+ cXHR.config.set({
+  'useSIFR' : true,
+  'allowedOrigins' : '*',
+  'sifrGateway' : 'sifr.html'});
+var url = "http://{{cross-domain}}/{{website}}/{{api}}";
+var settings = {"key1":"value", "key2" : "value2"};
+cXHR.ajax.POST(url, settings,
+    function(status, successResponse, xhr){
+    },
+    function  onError(status, errorResponse, xhr){
+    }
+);
+
+</code>
+</pre>
+
+<h4 id="setup-sifr">Setup SIFR Proxy Html</h4>
+<h5>Step 1 - Create Proxy Html
+</h5>
+<p>Create a proxy HTML file and serve the HTML file from the Cross Domain Api Server.</p>
+
+<h5>Step 2 - Reference CXHR Library
+</h5>
+<p>Download and reference the Cross Domain XHR library in the script.</p>
+
+<h5>Step 3 - Consider Security !!
+</h5>
+<p>To prevent the entire world-wide-web posting messages to your website, set certain domains as "allowedOrigins".  This can be achieved by setup module in cXHR. </p>
+
+Example :
+
+<pre class="prettyprint"><code class="typ">
+    <code class='com'>/** Allow All **/</code>
+     'use strict';
+    cXHR.config.set(
+    {
+      'allowedOrigins' : '*'
+    }
+    );
+
+
+    <code class='com'>/** Allow only specific origins **/</code>
+  'use strict';
+    cXHR.config.set(
+    {
+      'allowedOrigins' : 'localhost, public, domain.com'
+    }
+    );
+    <code class='com'>/** Multiple Domain names can be comma delimted **/</code>
+
+</code>
+</pre>
+
+
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Crossdomain-xhr maintained by <a href="https://github.com/ramahadevan">ramahadevan</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+  </body>
+</html>
