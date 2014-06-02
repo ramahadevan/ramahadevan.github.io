@@ -6,3 +6,21 @@ input:active{
     background-color:#3d3d3d;
     color:white;
 }
+
+.result{
+padding:10px;
+border:solid 1px transparent;
+border-radius: 3px
+}
+
+.result[data-iserror="false"]{
+    background-color:olive;
+    color:white;
+}
+
+
+.result[data-iserror="true"]{
+    background-color:orange;
+    color:white;
+
+}
