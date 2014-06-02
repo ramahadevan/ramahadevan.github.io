@@ -89,7 +89,8 @@ function showCallbackResult(callbackResult){
 
 
 bindEvent("simple-xhr-get","click",function(){
-    cXHR.ajax.GET(window.location.href, {}, function onSuccess(status, cbResult, xhr){
+    var url = window.location.href;
+    cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, onError);
 });
