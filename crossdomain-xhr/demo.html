@@ -83,7 +83,6 @@ function onError(errorCode, error, xhr){
 }
 
 function showCallbackResult(callbackResult){
-    console.log(callbackResult);
 }
 
 
@@ -106,7 +105,6 @@ bindEvent("simple-xhr-post","click",function(){
 
 bindEvent("c-xhr-get","click",function(){
     var url = "http://floating-peak-3869.herokuapp.com/keywords";
-    console.log(url);
     cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + url + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
