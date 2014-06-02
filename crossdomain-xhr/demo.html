@@ -41,6 +41,15 @@
 
         </p>
 
+
+        <h4>Example 3 - Cross Domain XHR GET</h4>
+        <p> This example executes a simple XHR get on current browser location
+            <input class="block" type="button" id="c-xhr-get" value="Ajax GET"></input>
+        </p>
+        <p id="cxhr-get-result">
+
+        </p>
+
 </section>
 </div>
 
@@ -85,6 +94,14 @@ bindEvent("simple-xhr-post","click",function(){
         document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
         document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='true'>POST for " + window.location.href + " Returned with " + errorCode + "</p>";
+    }, onError);
+});
+
+bindEvent("c-xhr-get","click",function(){
+    var url = "http://floating-peak-3869.herokuapp.com/keywords";
+
+    cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
+        document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, onError);
 });
 
