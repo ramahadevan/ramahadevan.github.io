@@ -96,10 +96,11 @@ bindEvent("simple-xhr-get","click",function(){
 });
 
 bindEvent("simple-xhr-post","click",function(){
+    var url = window.location.href;
     cXHR.ajax.POST(window.location.href, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
-        document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='true'>POST for " + window.location.href + " Returned with " + errorCode + "</p>";
+        document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='true'>POST for " + window.location.href + " Returned with " + errorCode + " : Only GET Supported for this page</p>";
     }, onError);
 });
 
