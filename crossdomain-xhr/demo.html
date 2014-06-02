@@ -63,9 +63,14 @@
 <script type="text/javascript" src="javascripts/crossdomain-xhr.min.js"></script>
 <script type="text/javascript">
 
-"use strict";
+'use strict';
+cXHR.config.set({
+    'useSIFR': true,
+    'allowedOrigins': '*',
+    'sifrGateway': 'sifr.html'
+});
 
-function bindEvent($elId, eventName, callback){
+function bindEvent($elId, eventName, callback) {
     document.getElementById($elId).addEventListener(eventName, callback);
 }
 
