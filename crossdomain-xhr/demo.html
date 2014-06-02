@@ -109,7 +109,9 @@ bindEvent("c-xhr-get","click",function(){
     console.log(url);
     cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + url + " Returned with " + status + "</p>";
-    }, onError);
+    }, function onError(errorCode, error, xhr){
+        document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='true'>POST for " + window.location.href + " Returned with " + errorCode + " : Only GET Supported for this page</p>";
+    });
 });
 
 </script>
