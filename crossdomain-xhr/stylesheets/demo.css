@@ -10,7 +10,8 @@ input:active{
 .result{
 padding:10px;
 border:solid 1px transparent;
-border-radius: 3px
+border-radius: 3px;
+margin:10px;
 }
 
 .result[data-iserror="false"]{
