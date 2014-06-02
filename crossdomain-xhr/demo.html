@@ -54,15 +54,15 @@
         }
 
         function onSuccess(status, cbResult, xhr){
-
+            showCallbackResult({status: status, result: cbResult, xhr: xhr});
         }
 
         function onError(errorCode, error, xhr){
-
+            showCallbackResult({status: errorCode, result: error, xhr: xhr, isErrored : true});
         }
 
         function showCallbackResult(callbackResult){
-
+            console.log(callbackResult);
         }
 
 
@@ -72,7 +72,7 @@
         });
 
         bindEvent("simple-xhr-post","click",function(){
-            cXHR.ajax.GET(window.location.href, {}, onSuccess, onError);
+            cXHR.ajax.POST(window.location.href, {}, onSuccess, onError);
         });
     </script>
   </body>
