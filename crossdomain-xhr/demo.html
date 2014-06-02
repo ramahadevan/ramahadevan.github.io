@@ -107,7 +107,7 @@ bindEvent("c-xhr-get","click",function(){
     var url = "http://floating-peak-3869.herokuapp.com/keywords";
 
     cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
-        document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
+        document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + url + " Returned with " + status + "</p>";
     }, onError);
 });
 
