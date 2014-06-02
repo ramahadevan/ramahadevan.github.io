@@ -37,7 +37,9 @@
     <p> This example executes a simple XHR get on current browser location
         <input class="block" type="button" id="simple-xhr-post" value="Ajax Post"></input>
     </p>
+        <p id="post-result" class="result">
 
+        </p>
 
 </section>
 </div>
@@ -79,7 +81,11 @@ bindEvent("simple-xhr-get","click",function(){
 });
 
 bindEvent("simple-xhr-post","click",function(){
-    cXHR.ajax.POST(window.location.href, {}, onSuccess, onError);
+    cXHR.ajax.POST(window.location.href, {}, function onSuccess(status, cbResult, xhr){
+        document.getElementById("post-result").innerHTML += "GET for " + window.location.href + " Returned with " + status;
+    }, function onError(errorCode, error, xhr){
+        document.getElementById("post-result").innerHTML += "POST for " + window.location.href + " Returned with " + errorCode;
+    }, onError);
 });
 
 </script>
