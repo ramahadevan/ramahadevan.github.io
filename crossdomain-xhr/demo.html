@@ -101,7 +101,7 @@ bindEvent("simple-xhr-post","click",function(){
         document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
         document.getElementById("post-result").innerHTML += "<p class='result' data-iserror='true'>POST for " + window.location.href + " Returned with " + errorCode + " : Only GET Supported for this page</p>";
-    }, onError);
+    });
 });
 
 bindEvent("c-xhr-get","click",function(){
