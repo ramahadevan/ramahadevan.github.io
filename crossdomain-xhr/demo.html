@@ -27,7 +27,7 @@
         <p> This example executes a simple XHR get on current browser location
             <input class="block" type="button" id="simple-xhr-get" value="Ajax GET"></input>
         </p>
-        <p id="get-result" class="result">
+        <p id="get-result">
 
         </p>
 
@@ -37,7 +37,7 @@
     <p> This example executes a simple XHR get on current browser location
         <input class="block" type="button" id="simple-xhr-post" value="Ajax Post"></input>
     </p>
-        <p id="post-result" class="result">
+        <p id="post-result">
 
         </p>
 
@@ -77,17 +77,17 @@ function showCallbackResult(callbackResult){
 bindEvent("simple-xhr-get","click",function(){
     cXHR.ajax.GET(window.location.href, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("get-result").setAttribute("data-iserror","false");
-        document.getElementById("get-result").innerHTML += "GET for " + window.location.href + " Returned with " + status;
+        document.getElementById("get-result").innerHTML += "<p class='result'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, onError);
 });
 
 bindEvent("simple-xhr-post","click",function(){
     cXHR.ajax.POST(window.location.href, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("post-result").setAttribute("data-iserror","false");
-        document.getElementById("post-result").innerHTML += "GET for " + window.location.href + " Returned with " + status;
+        document.getElementById("post-result").innerHTML += "<p class='result'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
         document.getElementById("post-result").setAttribute("data-iserror","true");
-        document.getElementById("post-result").innerHTML += "POST for " + window.location.href + " Returned with " + errorCode;
+        document.getElementById("post-result").innerHTML += "<p class='result'>POST for " + window.location.href + " Returned with " + errorCode + "</p>";
     }, onError);
 });
 
