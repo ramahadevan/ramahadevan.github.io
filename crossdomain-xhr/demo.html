@@ -76,6 +76,7 @@ function showCallbackResult(callbackResult){
 
 bindEvent("simple-xhr-get","click",function(){
     cXHR.ajax.GET(window.location.href, {}, function onSuccess(status, cbResult, xhr){
+        document.getElementById("get-result").setAttribute("data-iserror","true");
         document.getElementById("get-result").innerHTML += "GET for " + window.location.href + " Returned with " + status;
     }, onError);
 });
