@@ -116,12 +116,16 @@ bindEvent("simple-xhr-post","click",function(){
 });
 
 bindEvent("c-xhr-get","click",function(){
+    try{
     var url = "http://floating-peak-3869.herokuapp.com/keywords";
     cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + url + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
         document.getElementById("cxhr-get-result").innerHTML += "<p class='result' data-iserror='true'>POST for " + window.location.href + " Returned with " + errorCode + " : Only GET Supported for this page</p>";
     });
+}catch(e){
+    alert(e);
+}
 });
 
 bindEvent("c-xhr-post","click",function(){
