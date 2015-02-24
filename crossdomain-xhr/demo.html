@@ -93,7 +93,7 @@ cXHR.config.set({
 });
 
 function bindEvent($elId, eventName, callback) {
-    alert(eventName);
+    
     if (document.getElementById($elId).addEventListener) {
         document.getElementById($elId).addEventListener(eventName, callback);
     }else{
@@ -117,6 +117,7 @@ function showCallbackResult(callbackResult){
 
 bindEvent("simple-xhr-get","click",function(){
     var url = window.location.href;
+    console.log(url);
     cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + window.location.href + " Returned with " + status + "</p>";
     }, onError);
