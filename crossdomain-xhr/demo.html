@@ -141,6 +141,7 @@ bindEvent("c-xhr-get","click",function(){
 
 bindEvent("c-xhr-post","click",function(){
     var url = "http://floating-peak-3869.herokuapp.com/keywords";
+    alert('dopost');
     cXHR.ajax.POST(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("cxhr-post-result").innerHTML += "<p class='result' data-iserror='false'>POST for " + url + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
