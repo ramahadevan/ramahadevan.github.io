@@ -97,10 +97,7 @@ function bindEvent($elId, eventName, callback) {
     if (document.getElementById($elId).addEventListener) {
         document.getElementById($elId).addEventListener(eventName, callback);
     }else{
-        document.getElementById($elId).click = function(){
-            alert('test');
-            return false;
-        };
+        document.getElementById($elId).attachEvent("onclick",function(){alert('test')});
         
         
     }    
