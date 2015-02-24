@@ -69,9 +69,9 @@
         <p> This example executes a simple XHR get on current browser location
             <input class="block" type="button" id="c-xhr-post" value="Ajax POST"></input>
         </p>
-        <p id="cxhr-post-result">
+        <div id="cxhr-post-result">
 
-        </p>
+        </div>
 </section>
 </div>
 
@@ -118,7 +118,7 @@ function showCallbackResult(callbackResult){
 
 bindEvent("simple-xhr-get","click",function(){
     var url = window.location.href;
-    console.log(url);
+    
     cXHR.ajax.GET(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("get-result").innerHTML += "<p class='result' data-iserror='false'>GET for " + status + "</p>";
     }, onError);
@@ -144,7 +144,7 @@ bindEvent("c-xhr-get","click",function(){
 
 bindEvent("c-xhr-post","click",function(){
     var url = "http://floating-peak-3869.herokuapp.com/keywords";
-    alert('dopost');
+    
     cXHR.ajax.POST(url, {}, function onSuccess(status, cbResult, xhr){
         document.getElementById("cxhr-post-result").innerHTML += "<p class='result' data-iserror='false'>POST for " + url + " Returned with " + status + "</p>";
     }, function onError(errorCode, error, xhr){
