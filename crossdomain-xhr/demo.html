@@ -93,7 +93,11 @@ cXHR.config.set({
 });
 
 function bindEvent($elId, eventName, callback) {
-    document.getElementById($elId).addEventListener(eventName, callback);
+    if (document.getElementById($elId).addEventListener) {
+        document.getElementById($elId).addEventListener(eventName, callback);
+    }else{
+        document.getElementById($elId).attachEvent(eventName, callback);
+    }    
 }
 
 function onSuccess(status, cbResult, xhr){
