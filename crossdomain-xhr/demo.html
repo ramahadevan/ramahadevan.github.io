@@ -93,6 +93,7 @@ cXHR.config.set({
 });
 
 function bindEvent($elId, eventName, callback) {
+    alert(eventName);
     if (document.getElementById($elId).addEventListener) {
         document.getElementById($elId).addEventListener(eventName, callback);
     }else{
